@@ -11,4 +11,33 @@ package com.honeywell.hr.model;
  */
 public class Employee {
     
+    private String name;
+    private final String employeeNumber;
+    private String email;
+
+    public Employee(String employeeNumber){
+        this.employeeNumber = employeeNumber;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmployeeNumber() {
+        return employeeNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
 }

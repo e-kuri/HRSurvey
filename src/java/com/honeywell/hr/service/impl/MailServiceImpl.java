@@ -5,31 +5,21 @@
  */
 package com.honeywell.hr.service.impl;
 
-import com.honeywell.hr.service.ISurveyService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.service.IMailService;
 import org.springframework.mail.MailException;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author H255735
  */
-@Service
-public class SurveyService implements ISurveyService{
+public class MailServiceImpl implements IMailService{
 
-    @Autowired
-    private MailSender mailSender;
-    
     @Override
-    public void create() {
+    public void sendMail(Employee sender, Employee receiver, String mailBody) {
         
-    }
-    
-    public void sendMail(){
-        
+        /*
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo("eugenio.kuri@gmail.com");
         msg.setFrom("honeywell.tester69@gmail.com");
@@ -40,6 +30,7 @@ public class SurveyService implements ISurveyService{
         }catch(MailException e){
             System.out.println(e);
         }
-        
+*/
     }
+    
 }
