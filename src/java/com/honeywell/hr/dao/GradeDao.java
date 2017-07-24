@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.service;
-
-import com.honeywell.hr.model.Employee;
+package com.honeywell.hr.dao;
 
 /**
  *
  * @author H255735
  */
-public interface IMailService {
-    void sendMail();
+public interface GradeDao {
+    
+    void create();
+    
 }

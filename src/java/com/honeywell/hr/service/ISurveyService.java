@@ -5,12 +5,17 @@
  */
 package com.honeywell.hr.service;
 
+import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Survey;
+import java.util.List;
+
 /**
  *
  * @author H255735
  */
 public interface ISurveyService {
     
-    void create();
+    void create(Employee evaluator, Employee evaluated);
+    List<Survey> getSurveysForEmployee(String employeeId);
     
 }

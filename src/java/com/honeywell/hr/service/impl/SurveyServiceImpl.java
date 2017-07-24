@@ -5,7 +5,11 @@
  */
 package com.honeywell.hr.service.impl;
 
+import com.honeywell.hr.dao.SurveyDao;
+import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Survey;
 import com.honeywell.hr.service.ISurveyService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -18,16 +22,16 @@ import org.springframework.stereotype.Service;
  * @author H255735
  */
 @Service
-public class SurveyService implements ISurveyService{
-
+public class SurveyServiceImpl implements ISurveyService{
+    
     @Autowired
-    private MailSender mailSender;
+    private SurveyDao surveyDao;
     
     @Override
-    public void create() {
+    public void create(Employee evaluator, Employee evaluated) {
         
     }
-    
+    /*
     public void sendMail(){
         
         SimpleMailMessage msg = new SimpleMailMessage();
@@ -40,6 +44,11 @@ public class SurveyService implements ISurveyService{
         }catch(MailException e){
             System.out.println(e);
         }
-        
+    }
+*/
+
+    @Override
+    public List<Survey> getSurveysForEmployee(String employeeId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

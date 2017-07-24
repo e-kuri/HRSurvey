@@ -6,44 +6,72 @@
 package com.honeywell.hr.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author H255735
  */
+@Entity
+@Table(name = "Survey")
 public class Survey {
     
-    private final int id;
-    private final Employee evaluator;
-    private final Employee evaluated;
-    private List<Grade> grades;
+    @Id
+    @Column(name = "idSurvey")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @ManyToOne
+    @JoinColumn(name = "employeeId")
+    private Employee evaluator;
+    
+    @ManyToOne
+    @JoinColumn(name = "employeeId")
+    private Employee evaluated;
+    
+    @Column(name = "answered")
+    private boolean answered;
+    
+    @Column(name = "comments")
     private String comments;
     
-    public Survey(int id, Employee evaluator, Employee evaluated){
-        this.id = id;
-        this.evaluated = evaluated;
-        this.evaluator = evaluator;
-    }
-
-    public int getId() {
-        return id;
-    }
+    @Column(name = "created", insertable = false, updatable = false)
+    private Date created;
+    
+    @Column(name = "updated", insertable = false, updatable = false)
+    private Date updated;
 
     public Employee getEvaluator() {
         return evaluator;
     }
 
+    public void setEvaluator(Employee evaluator) {
+        this.evaluator = evaluator;
+    }
+
     public Employee getEvaluated() {
         return evaluated;
     }
-    
-    public List<Grade> getGrades() {
-        return grades;
+
+    public void setEvaluated(Employee evaluated) {
+        this.evaluated = evaluated;
     }
 
-    public void setGrades(List<Grade> grades) {
-        this.grades = grades;
+    public boolean isAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(boolean answered) {
+        this.answered = answered;
     }
 
     public String getComments() {
@@ -53,12 +81,17 @@ public class Survey {
     public void setComments(String comments) {
         this.comments = comments;
     }
-    
-    public void addGrade(Grade grade){
-        if(this.grades == null){
-            this.grades = new ArrayList<>();
-        }
-        this.grades.add(grade);
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public Date getUpdated() {
+        return updated;
     }
     
 }

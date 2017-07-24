@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.dao;
+package com.honeywell.hr.service;
 
 import com.honeywell.hr.model.Employee;
 import java.util.List;
@@ -12,9 +12,6 @@ import java.util.List;
  *
  * @author H255735
  */
-public interface EmployeeDao {
-    public void create(Employee employee);
-    public Employee getEmployeeByEmployeeNumber(String employeeNumber);
-    public List<Employee> getAll();
-    public void update(Employee employee);
+public interface IEmployeeService {
+            
 }

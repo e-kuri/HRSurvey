@@ -3,26 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.dao.impl;
+package com.honeywell.hr.dao.memoryimpl;
 
 import com.honeywell.hr.dao.EmployeeDao;
 import com.honeywell.hr.model.Employee;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author H255735
  */
+@Repository
 public class EmployeeDaoInMemoryImpl implements EmployeeDao{
 
     private static Map<String, Employee> employees;
     
-    public EmployeeDaoInMemoryImpl(){
+    static{
         employees = new HashMap<>();
+        /*
         Employee kuri = new Employee("H255735");
         kuri.setEmail("Eugenio.Kuri@honeywell.com");
         kuri.setName("Eugenio Kuri Sainz");
@@ -32,10 +36,11 @@ public class EmployeeDaoInMemoryImpl implements EmployeeDao{
         hr.setEmail("honeywell.tester69@gmail.com");
         hr.setName("John Digweed");
         employees.put(hr.getEmployeeNumber(), hr);
+*/
     }
     
     @Override
-    public void addEmployee(Employee employee) {
+    public void create(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -45,12 +50,12 @@ public class EmployeeDaoInMemoryImpl implements EmployeeDao{
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getAll() {
         return new ArrayList<Employee>(employees.values());
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
+    public void update(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

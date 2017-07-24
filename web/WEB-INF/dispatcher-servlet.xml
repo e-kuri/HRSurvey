@@ -52,6 +52,7 @@
 
     <context:component-scan base-package="com.honeywell.hr.controller" />
     <context:component-scan base-package="com.honeywell.hr.service" />
+    <context:component-scan base-package="com.honeywell.hr.dao"/>
     
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/*" />
     <mvc:annotation-driven />

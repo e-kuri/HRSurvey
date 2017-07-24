@@ -6,12 +6,17 @@
 package com.honeywell.hr.controller;
 
 import com.honeywell.hr.model.Survey;
-import com.honeywell.hr.service.impl.SurveyService;
+import com.honeywell.hr.service.IMailService;
+import com.honeywell.hr.service.ISurveyService;
+import com.honeywell.hr.service.impl.SurveyServiceImpl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.portlet.ModelAndView;
 
 /**
@@ -23,7 +28,7 @@ import org.springframework.web.portlet.ModelAndView;
 public class SurveyController {
     
     @Autowired
-    private SurveyService surveyService;
+    private IMailService mailService;
     
     @RequestMapping("/new")
     public String init(HttpServletRequest request, HttpServletResponse response){
@@ -33,7 +38,13 @@ public class SurveyController {
     
     @RequestMapping("/create")
     public void create(){
-        surveyService.sendMail();
+        mailService.sendMail();
+    }
+    
+    @RequestMapping(value = "/surveysByEmployee", method = RequestMethod.GET)
+    public String getSurveysByEmployer(@RequestParam("employeeId") String employeeId, ModelMap model){
+        
+        return "employeeDetails";
     }
     
 }

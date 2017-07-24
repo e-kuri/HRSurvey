@@ -6,15 +6,17 @@
 package com.honeywell.hr.dao;
 
 import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Survey;
 import java.util.List;
 
 /**
  *
  * @author H255735
  */
-public interface EmployeeDao {
-    public void create(Employee employee);
-    public Employee getEmployeeByEmployeeNumber(String employeeNumber);
-    public List<Employee> getAll();
-    public void update(Employee employee);
+public interface SurveyDao {
+    
+    List<Survey> surveysByEmployee(String employeeId);
+    void create(Employee evaluated, Employee evaluator);
+    void update(Survey survey);
+    
 }
