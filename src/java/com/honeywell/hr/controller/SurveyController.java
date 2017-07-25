@@ -30,6 +30,9 @@ public class SurveyController {
     @Autowired
     private IMailService mailService;
     
+    @Autowired
+    private ISurveyService surveyService;
+    
     @RequestMapping("/new")
     public String init(HttpServletRequest request, HttpServletResponse response){
        //ModelAndView mv = new ModelAndView("newSurvey");
@@ -38,7 +41,8 @@ public class SurveyController {
     
     @RequestMapping("/create")
     public void create(){
-        mailService.sendMail();
+        //mailService.sendMail();
+        surveyService.create(null, null);
     }
     
     @RequestMapping(value = "/surveysByEmployee", method = RequestMethod.GET)

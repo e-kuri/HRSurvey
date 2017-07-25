@@ -100,5 +100,9 @@ public class Employee {
     public Date getUpdated() {
         return updated;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

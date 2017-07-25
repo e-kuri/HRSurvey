@@ -29,7 +29,7 @@ public class SurveyServiceImpl implements ISurveyService{
     
     @Override
     public void create(Employee evaluator, Employee evaluated) {
-        
+        surveyDao.create(evaluated, evaluator);
     }
     /*
     public void sendMail(){

@@ -22,7 +22,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author H255735
  */
-@Repository
 public class SurveyDaoInMemoryImpl implements SurveyDao{
 
     private static Map<Integer, Survey> surveys;

@@ -5,6 +5,7 @@
  */
 package com.honeywell.hr.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Survey")
-public class Survey {
+public class Survey implements Serializable{
     
     @Id
     @Column(name = "idSurvey")
@@ -31,11 +32,11 @@ public class Survey {
     private Integer id;
     
     @ManyToOne
-    @JoinColumn(name = "employeeId")
+    @JoinColumn(name = "idEmployee_evaluator")
     private Employee evaluator;
     
     @ManyToOne
-    @JoinColumn(name = "employeeId")
+    @JoinColumn(name = "idEmployee_evaluated")
     private Employee evaluated;
     
     @Column(name = "answered")

@@ -58,5 +58,12 @@ Contributor(s):
          <property name="hibernate.connection.password">
             admin
          </property>
+         <mapping package="com.honeywell.hr.model"></mapping>
+         <mapping class="com.honeywell.hr.model.AverageGrade"></mapping>
+         <mapping class="com.honeywell.hr.model.CatGrade"></mapping>
+         <mapping class="com.honeywell.hr.model.Employee"></mapping>
+         <mapping class="com.honeywell.hr.model.EmployeeCategoryAverage"></mapping>
+         <mapping class="com.honeywell.hr.model.Grade"></mapping>
+         <mapping class="com.honeywell.hr.model.Survey"></mapping>
     </session-factory>
 </hibernate-configuration>
