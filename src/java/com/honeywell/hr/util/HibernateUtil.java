@@ -20,6 +20,7 @@ import org.hibernate.cfg.Configuration;
  * @author H255735
  */
 public class HibernateUtil {
+    /*
     private static SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
@@ -47,4 +48,5 @@ public class HibernateUtil {
     	// Close caches and connection pools
     	getSessionFactory().close();
     }
+*/
 }

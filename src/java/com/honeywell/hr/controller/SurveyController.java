@@ -5,6 +5,8 @@
  */
 package com.honeywell.hr.controller;
 
+import com.honeywell.hr.delegate.ISurveyDelegate;
+import com.honeywell.hr.model.Employee;
 import com.honeywell.hr.model.Survey;
 import com.honeywell.hr.service.IMailService;
 import com.honeywell.hr.service.ISurveyService;
@@ -28,21 +30,23 @@ import org.springframework.web.portlet.ModelAndView;
 public class SurveyController {
     
     @Autowired
-    private IMailService mailService;
+    private ISurveyDelegate surveyDelegate;
     
-    @Autowired
-    private ISurveyService surveyService;
-    
-    @RequestMapping("/new")
-    public String init(HttpServletRequest request, HttpServletResponse response){
-       //ModelAndView mv = new ModelAndView("newSurvey");
-        return "newSurvey";
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String init(){
+        return "newMail";
     }
     
-    @RequestMapping("/create")
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String sendSurvey(Employee employee, @RequestParam String emailBody){
+        surveyDelegate.createAndSend(employee, emailBody);
+        return "mailSent";
+    }
+    
+    @RequestMapping("/save")
     public void create(){
         //mailService.sendMail();
-        surveyService.create(null, null);
+        //surveyService.create(null, null);
     }
     
     @RequestMapping(value = "/surveysByEmployee", method = RequestMethod.GET)

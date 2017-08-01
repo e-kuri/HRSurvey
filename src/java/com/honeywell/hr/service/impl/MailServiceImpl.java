@@ -24,20 +24,23 @@ public class MailServiceImpl implements IMailService{
     private MailSender mailSender;
     
     @Override
-    public void sendMail() {
-        
+    public void createAndSendEmail(Employee receiver, String mailBody, int surveyId) {
         
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("eugenio.kuri@gmail.com");
+        msg.setTo(receiver.getEmail());
         msg.setFrom("honeywell.tester69@gmail.com");
-        msg.setSubject("test");
-        msg.setText("my test");
+        msg.setSubject("HR Evaluation");
+        msg.setText(mailBody == null ? getDefaultMailBody() : mailBody );
         try{
             this.mailSender.send(msg);
         }catch(MailException e){
             System.out.println(e);
         }
 
+    }
+    
+    private String getDefaultMailBody(){
+        return "body";
     }
     
 }

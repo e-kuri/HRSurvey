@@ -45,11 +45,11 @@
                    source: availableIds,
                    change: function(event, ui){
                        if( $(this).val() == "H255735" ){
-                            $("#name").val("Eugenio Kuri Sainz");
-                            $("#email").val("Eugenio.Kuri@Honeywell.com");
+                            $("#firstName").val("Eugenio Kuri Sainz");
+                            $("#emailBody").val("Eugenio.Kuri@Honeywell.com");
                         }else{
-                            $("#name").val("");
-                            $("#email").val("");
+                            $("#firstName").val("");
+                            $("#emailBody").val("");
                         } 
                    }
                 });
@@ -62,12 +62,12 @@
     <body>
         <div class="container">
             <h1 class="page-header">Send New Survey</h1>
-            <form class = "form-horizontal" role = "form" onsubmit="createSurvey()" method="get">
+            <form class = "form-horizontal" role = "form" action="new.do" method="post">
                 
                 <div class="form-group">
-                    <label for="body" class='col-sm-2 control-label'>Email body</label>
+                    <label for="emailBody" class='col-sm-2 control-label'>Email body</label>
                     <div class="col-sm-10">
-                        <textarea class='form-control' rows="6" name="body"></textarea>
+                        <textarea class='form-control' rows="6" name="emailBody"></textarea>
                     </div>
                 </div>
                 
@@ -79,9 +79,16 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="name" class = "col-sm-2 control-label">Name</label>
+                    <label for="firstName" class = "col-sm-2 control-label">First Name</label>
                     <div class = "col-sm-10">
-                      <input type = "text" class = "form-control" id = "name" name="name" placeholder = "Name" readonly>
+                      <input type = "text" class = "form-control" id = "firstName" name="firstName" placeholder = "Name" readonly>
+                   </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName" class = "col-sm-2 control-label">Last Name</label>
+                    <div class = "col-sm-10">
+                      <input type = "text" class = "form-control" id = "lastName" name="lastName" placeholder = "Last Name" readonly>
                    </div>
                 </div>
                 
@@ -99,7 +106,7 @@
                    </div>
                 </div>
 
-             </form>
+            </form>
         </div>
     </body>
 </html>

@@ -11,6 +11,8 @@ import com.honeywell.hr.model.Survey;
 import com.honeywell.hr.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -20,24 +22,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SurveyDaoHibernateImpl implements SurveyDao{
 
+    @Autowired
+    private SessionFactory sessionFactory;
+    
     @Override
     public List<Survey> surveysByEmployee(String employeeId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void create(Employee evaluated, Employee evaluator) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Survey survey = new Survey();
-            Employee emp = new Employee();
-            emp.setId(1);
-            survey.setEvaluator(emp);
-            survey.setEvaluated(emp);
-            survey.setAnswered(false);
-            session.save(survey);
-            session.getTransaction().commit();
-            HibernateUtil.shutdown();
+    public Integer save(Survey survey) {
+        Session session = sessionFactory.getCurrentSession();
+        //session.beginTransaction();
+        return (Integer)session.save(survey);
+        //session.getTransaction().commit();
     }
 
     @Override

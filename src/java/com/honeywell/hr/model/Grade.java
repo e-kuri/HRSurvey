@@ -23,13 +23,19 @@ import javax.persistence.Table;
 @Table(name = "Grade")
 public class Grade {
 
+    public Grade(){}
+    
+    public Grade(Survey survey, CatGrade catGrade){
+        
+    }
+    
     @Id
     @Column(name = "idGrade")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     
     @Column(name = "grade", nullable = false)
-    private short grade;
+    private Short grade;
     
     @Column(name = "created", insertable = false, updatable = false)
     private Date created;
@@ -45,7 +51,7 @@ public class Grade {
     @JoinColumn(name = "idSurvey")
     private Survey survey;
 
-    public short getGrade() {
+    public Short getGrade() {
         return grade;
     }
 
@@ -69,8 +75,12 @@ public class Grade {
         this.survey = survey;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public Date getCreated() {

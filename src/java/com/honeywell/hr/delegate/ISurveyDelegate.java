@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.service;
+package com.honeywell.hr.delegate;
 
 import com.honeywell.hr.model.Employee;
 
@@ -11,6 +11,8 @@ import com.honeywell.hr.model.Employee;
  *
  * @author H255735
  */
-public interface IMailService {
-    void createAndSendEmail(Employee receiver, String mailBody, int surveyId);
+public interface ISurveyDelegate {
+    
+    void createAndSend(Employee employee, String mailBody);
+    
 }

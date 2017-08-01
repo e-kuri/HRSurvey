@@ -16,7 +16,7 @@ import java.util.List;
 public interface SurveyDao {
     
     List<Survey> surveysByEmployee(String employeeId);
-    void create(Employee evaluated, Employee evaluator);
+    Integer save(Survey survey);
     void update(Survey survey);
     
 }

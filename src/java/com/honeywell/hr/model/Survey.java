@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +27,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Survey")
 public class Survey implements Serializable{
+    
+    public Survey(){}
+    
+    public Survey(Employee evaluated, Employee evaluator){
+        this.evaluated = evaluated;
+        this.evaluator = evaluator;
+        this.answered = false;
+    }
     
     @Id
     @Column(name = "idSurvey")
@@ -51,6 +61,9 @@ public class Survey implements Serializable{
     @Column(name = "updated", insertable = false, updatable = false)
     private Date updated;
 
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL)
+    private List<Grade> grades;
+    
     public Employee getEvaluator() {
         return evaluator;
     }
@@ -82,6 +95,10 @@ public class Survey implements Serializable{
     public void setComments(String comments) {
         this.comments = comments;
     }
+    
+    public void setId(Integer id){
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -93,6 +110,14 @@ public class Survey implements Serializable{
 
     public Date getUpdated() {
         return updated;
+    }
+
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
     }
     
 }

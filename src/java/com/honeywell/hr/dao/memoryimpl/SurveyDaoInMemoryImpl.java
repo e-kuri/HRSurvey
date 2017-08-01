@@ -43,7 +43,6 @@ public class SurveyDaoInMemoryImpl implements SurveyDao{
         return result;
     }
 
-    @Override
     public void create(Employee evaluated, Employee evaluator) {
         int id = 0;
         Iterator it = surveys.entrySet().iterator();
@@ -55,6 +54,11 @@ public class SurveyDaoInMemoryImpl implements SurveyDao{
     @Override
     public void update(Survey survey) {
        
+    }
+
+    @Override
+    public Integer save(Survey survey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

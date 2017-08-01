@@ -118,7 +118,7 @@ CREATE INDEX `fk_Grade_Survey1_idx` ON `hr`.`Grade` (`idSurvey` ASC);
 -- Table `hr`.`EmployeeCategoryAverage`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `hr`.`EmployeeCategoryAverage` ;
-
+/*
 CREATE TABLE IF NOT EXISTS `hr`.`EmployeeCategoryAverage` (
   `idCatGrade` INT NOT NULL,
   `idEmployee` INT NOT NULL,
@@ -141,7 +141,7 @@ CREATE INDEX `fk_CategoryAverage_CatGrade1_idx` ON `hr`.`EmployeeCategoryAverage
 
 CREATE INDEX `fk_CategoryAverage_Employee1_idx` ON `hr`.`EmployeeCategoryAverage` (`idEmployee` ASC);
 
-
+*/
 -- -----------------------------------------------------
 -- Table `hr`.`User`
 -- -----------------------------------------------------
@@ -171,6 +171,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+/*
 DELIMITER //
 DROP TRIGGER IF EXISTS employee_category_average//
 CREATE TRIGGER employee_category_average AFTER INSERT ON Grade
@@ -183,3 +184,4 @@ UPDATE employeecategoryaverage SET average = (
 	)
 ) where idCatGrade = NEW.idCatGrade AND idEmployee = eid;
 END//
+*/
