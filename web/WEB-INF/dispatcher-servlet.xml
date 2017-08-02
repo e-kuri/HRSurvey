@@ -59,7 +59,15 @@
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.honeywell.hr.dao.hibernateImpl" />
+        <property name="packagesToScan" value="com.honeywell.hr.dao.model" />
+         <property name="annotatedClasses">
+       <list>
+           <value>com.honeywell.hr.model.CatGrade</value>
+           <value>com.honeywell.hr.model.Employee</value>
+           <value>com.honeywell.hr.model.Grade</value>
+           <value>com.honeywell.hr.model.Survey</value>     
+       </list>
+    </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -68,6 +76,28 @@
             </props>
         </property>
     </bean>
+
+    <bean id="jacksonMessageConverter"  
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
+    </bean>
+    
+    <bean  class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jacksonMessageConverter" />
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+      <property name="velocityProperties">
+         <value>
+          resource.loader=class
+          class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+         </value>
+      </property>
+   </bean>
 
     <context:component-scan base-package="com.honeywell.hr.controller" />
     <context:component-scan base-package="com.honeywell.hr.delegate.impl"/>

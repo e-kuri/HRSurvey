@@ -5,6 +5,7 @@
  */
 package com.honeywell.hr.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CatGrade")
-public class CatGrade {
+public class CatGrade implements Serializable{
     
     @Id
     @Column(name = "idCatGrade")
@@ -47,4 +48,9 @@ public class CatGrade {
     public Date getCreated() {
         return created;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 }

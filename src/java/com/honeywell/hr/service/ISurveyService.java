@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ISurveyService {
     
-    Integer createAndSave(Employee evaluator, Employee evaluated);
+    Integer createAndSaveSurvey(Employee evaluator, Employee evaluated);
     List<Survey> getSurveysForEmployee(String employeeId);
     
 }

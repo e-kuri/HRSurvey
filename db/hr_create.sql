@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS `hr`.`Grade` ;
 
 CREATE TABLE IF NOT EXISTS `hr`.`Grade` (
   `idGrade` INT NOT NULL AUTO_INCREMENT,
-  `grade` TINYINT NOT NULL check(grade between 1 and 5),
+  `grade` TINYINT check(grade between 1 and 5),
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `idCatGrade` INT NOT NULL,

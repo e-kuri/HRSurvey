@@ -6,13 +6,12 @@
 package com.honeywell.hr.delegate;
 
 import com.honeywell.hr.model.Employee;
+import java.util.List;
 
 /**
  *
  * @author H255735
  */
-public interface ISurveyDelegate {
-    
-    void createAndSend(Employee employee);
-    
+public interface IEmployeeDelegate {
+    List<Employee> employeesForPartialEmployeeNumber(String partialEmpNum);
 }

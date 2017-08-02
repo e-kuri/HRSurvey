@@ -33,9 +33,10 @@ public class SurveyDaoHibernateImpl implements SurveyDao{
     @Override
     public Integer save(Survey survey) {
         Session session = sessionFactory.getCurrentSession();
-        //session.beginTransaction();
-        return (Integer)session.save(survey);
-        //session.getTransaction().commit();
+        session.beginTransaction();
+        Integer id = (Integer)session.save(survey);
+        session.getTransaction().commit();
+        return id;
     }
 
     @Override

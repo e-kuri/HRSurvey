@@ -38,11 +38,29 @@
                 });
             }
             
+            
+            
             $(document).ready(function(){
-                var availableIds = ["H255735"];
+                
+                var papas = ["aaa","vbvv","sds"]
                 
                 $("#employeeNumber").autocomplete({
-                   source: availableIds,
+                   source: function(request, response){
+                     $.ajax({
+                        url: "../employee/emplist/" + request.term,
+                        method: "GET",
+                        dataType: "json",
+                     }).done(function(data){
+                         console.log(data);
+                         var ids = [data.length];
+                         for(var i=0; i<data.length; i++){
+                             ids[i] = data[i]['employeeId'];
+                         }
+                         response(ids);
+                     }).fail(function(data){
+                         alert('error getting the employees');
+                     });
+                   },
                    change: function(event, ui){
                        if( $(this).val() == "H255735" ){
                             $("#firstName").val("Eugenio Kuri Sainz");
@@ -51,7 +69,9 @@
                             $("#firstName").val("");
                             $("#emailBody").val("");
                         } 
-                   }
+                   },
+                   delay: 500,
+                   minLength: 3
                 });
                 
             });
@@ -63,13 +83,6 @@
         <div class="container">
             <h1 class="page-header">Send New Survey</h1>
             <form class = "form-horizontal" role = "form" action="new.do" method="post">
-                
-                <div class="form-group">
-                    <label for="emailBody" class='col-sm-2 control-label'>Email body</label>
-                    <div class="col-sm-10">
-                        <textarea class='form-control' rows="6" name="emailBody"></textarea>
-                    </div>
-                </div>
                 
                 <div class="form-group">
                     <label for="employeeNumber" class = "col-sm-2 control-label">Employee Number</label>

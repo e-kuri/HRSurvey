@@ -13,5 +13,7 @@ import java.util.List;
  * @author H255735
  */
 public interface IEmployeeService {
-            
+    
+     List<Employee> getEmployeesForPartialEmployeeNumber(String partialEmpNum);
+   
 }

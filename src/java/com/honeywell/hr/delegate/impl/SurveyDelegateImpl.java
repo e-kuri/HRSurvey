@@ -27,9 +27,10 @@ public class SurveyDelegateImpl implements ISurveyDelegate{
     private IMailService mailService;
     
     @Override
-    public void createAndSend(Employee employee, String mailBody) {
-        Integer surveyId = surveyService.createAndSave(employee, employee);
-        mailService.createAndSendEmail(employee, mailBody, surveyId);
+    public void createAndSend(Employee employee) {
+        employee.setId(1);
+        Integer surveyId = surveyService.createAndSaveSurvey(employee, employee);
+        mailService.createAndSendEmail(employee, surveyId);
     }
     
 }

@@ -34,11 +34,12 @@ public class SurveyServiceImpl implements ISurveyService, InitializingBean{
     private List<CatGrade> gradeCategories;
     
     @Override
-    public Integer createAndSave(Employee evaluator, Employee evaluated) {
+    public Integer createAndSaveSurvey(Employee evaluator, Employee evaluated) {
         Survey survey = new Survey(evaluated, evaluator);
         survey.setId(surveyDao.save(survey));
-        List<Grade> grades = new ArrayList<>(gradeCategories.size());
-        for(CatGrade cat : gradeCategories){
+        List<CatGrade> categories = getGradeCategories();
+        List<Grade> grades = new ArrayList<>(categories.size());
+        for(CatGrade cat : categories){
             Grade grade = new Grade(survey, cat);
             grades.add(grade);
         }

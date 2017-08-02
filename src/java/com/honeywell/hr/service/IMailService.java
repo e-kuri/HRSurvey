@@ -12,5 +12,5 @@ import com.honeywell.hr.model.Employee;
  * @author H255735
  */
 public interface IMailService {
-    void createAndSendEmail(Employee receiver, String mailBody, int surveyId);
+    void createAndSendEmail(Employee receiver, int surveyId);
 }

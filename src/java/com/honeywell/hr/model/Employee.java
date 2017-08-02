@@ -5,6 +5,7 @@
  */
 package com.honeywell.hr.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class Employee implements Serializable{
     
     @Id
     @Column(name = "idEmployee")

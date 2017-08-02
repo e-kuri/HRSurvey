@@ -38,8 +38,8 @@ public class SurveyController {
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String sendSurvey(Employee employee, @RequestParam String emailBody){
-        surveyDelegate.createAndSend(employee, emailBody);
+    public String sendSurvey(Employee employee){
+        surveyDelegate.createAndSend(employee);
         return "mailSent";
     }
     

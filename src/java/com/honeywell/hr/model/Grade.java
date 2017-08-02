@@ -5,7 +5,9 @@
  */
 package com.honeywell.hr.model;
 
+import com.honeywell.hr.exception.InvalidValueException;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,8 @@ public class Grade {
     public Grade(){}
     
     public Grade(Survey survey, CatGrade catGrade){
-        
+        this.survey = survey;
+        this.catGrade = catGrade;
     }
     
     @Id
@@ -34,7 +37,7 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "grade", nullable = false)
+    @Column(name = "grade")
     private Short grade;
     
     @Column(name = "created", insertable = false, updatable = false)
@@ -55,8 +58,12 @@ public class Grade {
         return grade;
     }
 
-    public void setGrade(short grade) {
-        this.grade = grade;
+    public void setGrade(short grade) throws InvalidValueException {
+        if(grade > 0 && grade < 6){
+            this.grade = grade;
+        }else{
+            throw new InvalidValueException("Grade must be between 1 and 5");
+        }
     }
 
     public CatGrade getCatGrade() {

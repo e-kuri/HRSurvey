@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author H255735
  */
-public class EmployeeDaoInMemoryImpl implements EmployeeDao{
+public class EmployeeDaoInMemoryImpl{
 
     private static Map<String, Employee> employees;
     
@@ -38,22 +38,18 @@ public class EmployeeDaoInMemoryImpl implements EmployeeDao{
 */
     }
     
-    @Override
     public void create(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public Employee getEmployeeByEmployeeNumber(String employeeNumber) {
         return employees.get(employeeNumber);
     }
 
-    @Override
     public List<Employee> getAll() {
         return new ArrayList<Employee>(employees.values());
     }
 
-    @Override
     public void update(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
