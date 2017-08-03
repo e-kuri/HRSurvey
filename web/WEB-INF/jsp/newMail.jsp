@@ -33,8 +33,6 @@
                    url: "create.do" 
                 }).done(function(){
                     alert('success!');
-                }).fail(function(){
-                    alert('error');
                 });
             }
             
@@ -94,14 +92,14 @@
                 <div class="form-group">
                     <label for="firstName" class = "col-sm-2 control-label">First Name</label>
                     <div class = "col-sm-10">
-                      <input type = "text" class = "form-control" id = "firstName" name="firstName" placeholder = "Name" readonly>
+                      <input type = "text" class = "form-control" id = "firstName" name="firstName" placeholder = "Name" >
                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="lastName" class = "col-sm-2 control-label">Last Name</label>
                     <div class = "col-sm-10">
-                      <input type = "text" class = "form-control" id = "lastName" name="lastName" placeholder = "Last Name" readonly>
+                      <input type = "text" class = "form-control" id = "lastName" name="lastName" placeholder = "Last Name" >
                    </div>
                 </div>
                 

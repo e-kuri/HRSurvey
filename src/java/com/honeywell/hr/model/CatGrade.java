@@ -29,6 +29,9 @@ public class CatGrade implements Serializable{
     
     @Column(name = "category")
     private String category;
+    
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "created", insertable = false, updatable = false)
     private Date created;
@@ -51,6 +54,14 @@ public class CatGrade implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

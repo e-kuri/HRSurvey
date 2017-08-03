@@ -5,18 +5,16 @@
  */
 package com.honeywell.hr.service;
 
-import com.honeywell.hr.model.Employee;
-import com.honeywell.hr.model.Survey;
+import com.honeywell.hr.model.CatGrade;
 import java.util.List;
 
 /**
  *
  * @author H255735
  */
-public interface ISurveyService {
+public interface ICatGradeService {
     
-    Integer createAndSaveSurvey(Employee evaluator, Employee evaluated);
-    List<Survey> getSurveysForEmployee(String employeeId);
-    Survey getSurveyById(int surveyId);
+    List<CatGrade> getAllCatGrades();
+    List<CatGrade> getInMemoryCategories();
     
 }

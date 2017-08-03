@@ -55,4 +55,11 @@ public class SurveyController {
         return "employeeDetails";
     }
     
+    @RequestMapping(value = "answer", method = RequestMethod.GET)
+    public String answerSurvey(@RequestParam("idSurvey") int surveyId, 
+            @RequestParam("rating") int rating, ModelMap model){
+        model.addAllAttributes(surveyDelegate.getMapAttributesToShowSurvey(surveyId, rating));
+        return "answerSurvey";
+    }
+    
 }

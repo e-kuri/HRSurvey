@@ -18,5 +18,6 @@ public interface SurveyDao {
     List<Survey> surveysByEmployee(String employeeId);
     Integer save(Survey survey);
     void update(Survey survey);
+    Survey getSurveyById(int surveyId);
     
 }

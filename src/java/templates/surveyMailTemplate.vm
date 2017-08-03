@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+          <style type="text/css">
+body {
+	text-align:center;
+	background-color: #F9F9F9;
+}
+h3, p {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+	margin: 0 0 10px 0;
+}
+.subtext {
+	font-size: 12px;
+	margin-top: 10px;
+}
+/*
+	Ratings Stars
+	(with as little code as possible)
+	Based on Chris Coyier's code - http://css-tricks.com/star-ratings/
+*/
+.rating {
+	unicode-bidi: bidi-override;
+	direction: rtl;
+	text-align: center;
+	font-size: 36px;
+}
+.rating a {
+	text-decoration: none;
+	color: #DEDEDE;
+	text-shadow:1px 1px 1px #666666;
+}
+a:hover {
+	color: #FDD017 !important;
+}
+.rating > a {
+	display: inline-block;
+	position: relative;
+	width: 1.1em;
+}
+.rating > a:hover, .rating > a:hover ~ a {
+ color: transparent;
+}
+.rating > a:hover:before, .rating > a:hover ~ a:before {
+ content: "\2605";
+ position: absolute;
+ left: 1;
+ color: #FDD017;
+}
+</style>
+    </head>
+    <body style="margin-top: 0;margin-bottom: 0;margin-left: 0;margin-right: 0;padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;min-width: 100%;background-color: #f5f5f5">
+        #set($url = "${surveyUrl}?idSurvey=${idSurvey}&rating=" )
+
+<table class="main-wrapper" style="border-collapse: collapse;border-spacing: 0;display: table;table-layout: fixed; margin: 0 auto; -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-rendering: optimizeLegibility;background-color: #f5f5f5; width: 100%;">
+        <tbody>
+            <tr>
+                <td style="padding: 0;vertical-align: top" class="">
+                    <div class="bottom-padding" style="margin-bottom: 0px; line-height: 30px; font-size: 30px;">&nbsp;</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 0;vertical-align: top; width: 100%;" class="">
+                    <center>
+                        <!--[if gte mso 11]>
+ <center>
+
+<!-- Wufoo -->
+<h3>Dear ${employee.firstName}, thank you for getting in touch with the HR department.<br/>Please help us answering the following survey so we can improve.</h3>
+<table width="320" border="0" align="center" cellpadding="20" cellspacing="0" style="text-align: center; background-color: #FFFFFF;">
+  <tr>
+    <td><p>How will you rate the performance of your HRG during your last request? </p>
+      <div class="rating"> <a href="${url}5" title="5">&#9734;</a> <a href="${url}4" title="4">&#9734;</a> <a href="${url}3" title="3">&#9734;</a> <a href="${url}2" title="2">&#9734;</a> <a href="${url}1" title="1">&#9734;</a></div>
+      <p><span class="subtext">(select 1-5 stars)</span></p></td>
+  </tr>
+</table>
+    </body>
+</html>

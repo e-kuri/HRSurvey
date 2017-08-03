@@ -6,9 +6,7 @@
 package com.honeywell.hr.dao.hibernateImpl;
 
 import com.honeywell.hr.dao.SurveyDao;
-import com.honeywell.hr.model.Employee;
 import com.honeywell.hr.model.Survey;
-import com.honeywell.hr.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,6 +40,14 @@ public class SurveyDaoHibernateImpl implements SurveyDao{
     @Override
     public void update(Survey survey) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Survey getSurveyById(int surveyId) {
+        Session session = sessionFactory.openSession();
+        Survey survey = (Survey)session.get(Survey.class, surveyId);
+        session.close();
+        return survey;
     }
     
 }

@@ -5,7 +5,10 @@
  */
 package com.honeywell.hr.delegate;
 
+import com.honeywell.hr.model.CatGrade;
 import com.honeywell.hr.model.Employee;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -14,5 +17,6 @@ import com.honeywell.hr.model.Employee;
 public interface ISurveyDelegate {
     
     void createAndSend(Employee employee);
+    Map<String, Object> getMapAttributesToShowSurvey(int surveyId, int rating);
     
 }

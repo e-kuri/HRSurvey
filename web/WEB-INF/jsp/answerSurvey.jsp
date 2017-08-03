@@ -17,20 +17,37 @@
         <script src="../resources/js/jquery-ui.js"></script>
         <script src="../resources/js/jquery.rateyo.min.js"></script>
         <link rel="stylesheet" href="../resources/css/jquery.rateyo.min.css"/>
+        <script>
+            $(document).ready(function(){
+                var wdth = $('#surveyForm').width() / 10;
+                
+                $(".rate").rateYo({
+                    starWidth: wdth + "px"
+                });
+                
+                $("#comments").width(wdth*5);
+            });
+        </script>
         <title>Answer Survey</title>
     </head>
     <body>
         <div class="container">
-            <h1 class="page-header">Send New Survey</h1>
-            <form class = "form-horizontal" role = "form" onsubmit="saveSurvey()" method="get">
-                <c:set var="i" value="0"/>
-                <c:forEach items="${categories}" var="cat">
-                    <label for="grade">${cat.catGrade.category}</label>
-                    <div class="jq-ry-group-wrapper">
-                    </div>
-                    <c:set var="i" value="${i+1}"/>
-                </c:forEach>
-            </form>
+        <h1 class="page-header"> Please rate the following aspects during your communication with ${survey.evaluated.firstName} ${survey.evaluated.lastName}</h1>
+     
+        <form id="surveyForm" class = "form-horizontal" role = "form" onsubmit="saveSurvey()" method="get" style="margin: 5rem">
+
+            <c:forEach items="${survey.grades}" var="grade">
+                <div class="form-group row">
+                    <h4><label for="grade_${grade.catGrade.id}">${grade.catGrade.description}</label></h4>
+                    <div class="col-10 rate" id="grade_${grade.catGrade.id}" data-rateyo-rating="${rating}" ></div>
+                </div>
+            </c:forEach>
+            <div class="form-group">
+                <h4><label for="comments">Comments</label></h4><br>
+                <textarea id="comments" name="comments" rows="6"></textarea>
+            </div>
+            <button type="button" class="btn-primary btn-lg">Send</button>
+        </form>
         </div>
     </body>
 </html>

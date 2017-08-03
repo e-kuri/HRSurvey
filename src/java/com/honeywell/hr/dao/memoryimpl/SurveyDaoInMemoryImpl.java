@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author H255735
  */
-public class SurveyDaoInMemoryImpl implements SurveyDao{
+public class SurveyDaoInMemoryImpl{
 
     private static Map<Integer, Survey> surveys;
     
@@ -30,7 +30,6 @@ public class SurveyDaoInMemoryImpl implements SurveyDao{
         surveys = new LinkedHashMap<>();
     }
     
-    @Override
     public List<Survey> surveysByEmployee(String employeeNumber) {
         List<Survey> result = new LinkedList<>();
         Iterator it = surveys.values().iterator();
@@ -51,12 +50,10 @@ public class SurveyDaoInMemoryImpl implements SurveyDao{
         }
     }
 
-    @Override
     public void update(Survey survey) {
        
     }
 
-    @Override
     public Integer save(Survey survey) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
