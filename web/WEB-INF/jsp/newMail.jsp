@@ -36,14 +36,7 @@
                 });
             }
             
-            
-            
-            $(document).ready(function(){
-                
-                var papas = ["aaa","vbvv","sds"]
-                
-                $("#employeeNumber").autocomplete({
-                   source: function(request, response){
+            /*function(request, response){
                      $.ajax({
                         url: "../employee/emplist/" + request.term,
                         method: "GET",
@@ -55,14 +48,34 @@
                              ids[i] = data[i]['employeeId'];
                          }
                          response(ids);
-                     }).fail(function(data){
-                         alert('error getting the employees');
                      });
-                   },
+             */
+            
+            $(document).ready(function(){
+                
+                var papas = ["H255735"];
+                
+                $("#employeeNumber").autocomplete({
+                    source: papas,
+                   /* source: function(request, response){
+                        $.ajax({
+                           url: "../employee/emplist/" + request.term,
+                           method: "GET",
+                           dataType: "json",
+                        }).done(function(data){
+                            console.log(data);
+                            var ids = [data.length];
+                            for(var i=0; i<data.length; i++){
+                                ids[i] = data[i]['employeeId'];
+                            }
+                            response(ids);
+                        });
+                    },*/
                    change: function(event, ui){
                        if( $(this).val() == "H255735" ){
-                            $("#firstName").val("Eugenio Kuri Sainz");
-                            $("#emailBody").val("Eugenio.Kuri@Honeywell.com");
+                            $("#firstName").val("Eugenio");
+                            $("#lastName").val("Kuri");
+                            $("#email").val("Eugenio.Kuri@Honeywell.com");
                         }else{
                             $("#firstName").val("");
                             $("#emailBody").val("");

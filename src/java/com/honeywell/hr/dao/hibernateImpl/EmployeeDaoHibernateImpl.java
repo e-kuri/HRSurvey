@@ -67,5 +67,13 @@ public class EmployeeDaoHibernateImpl implements EmployeeDao{
         
         return employees;
     }
+
+    @Override
+    public Employee getEmployeeById(int employeeId) {
+        Session session = sessionFactory.openSession();
+        Employee employee = (Employee)session.get(Employee.class, employeeId);
+        session.close();
+        return employee;
+    }
     
 }

@@ -18,4 +18,5 @@ public interface EmployeeDao {
     public List<Employee> getAll();
     public void update(Employee employee);
     public List<Employee> getEmployeesForPartialEmployeeNumber(String partialEmployeeNumber);
+    public Employee getEmployeeById(int employeeId);
 }

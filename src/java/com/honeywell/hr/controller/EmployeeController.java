@@ -6,6 +6,7 @@
 package com.honeywell.hr.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.honeywell.hr.delegate.IEmployeeDelegate;
 import com.honeywell.hr.model.CatGrade;
 import com.honeywell.hr.model.Employee;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author H255735
  */
-@RestController
+@Controller
 @RequestMapping("/employee")
 public class EmployeeController {
     
@@ -38,14 +39,6 @@ public class EmployeeController {
     public String getEmployeesWithAverageGrades(ModelMap model){
         model.addAttribute("employees", model);
         return "listEmployers";
-    }
-    
-    @RequestMapping(value = "/emplist/{partialId}", method = RequestMethod.GET)
-    public @ResponseBody List<TestObject> getIdsLike(@PathVariable String partialId){
-        List<TestObject> employees = new LinkedList<>();
-        TestObject g = new TestObject();
-        employees.add(g);
-        return employees;
     }
     
 }

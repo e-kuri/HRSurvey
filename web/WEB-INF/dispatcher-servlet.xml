@@ -76,19 +76,17 @@
             </props>
         </property>
     </bean>
-
-    <bean id="jacksonMessageConverter"  
-        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
-    </bean>
     
-    <bean  class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <ref bean="jacksonMessageConverter" />
-            </list>
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="text/xml" />
+                <entry key="htm" value="text/html" />
+            </map>
         </property>
+        <property name="defaultContentType" value="application/json"/>
     </bean>
-
 
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
       <property name="velocityProperties">
