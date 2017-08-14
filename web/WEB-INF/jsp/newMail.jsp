@@ -55,6 +55,8 @@
                 
                 var papas = ["H255735"];
                 
+                $("#body").width($("#subject").width());
+                
                 $("#employeeNumber").autocomplete({
                     source: papas,
                    /* source: function(request, response){
@@ -122,6 +124,21 @@
                    <div class = "col-sm-10">
                       <input type = "text" class = "form-control" id = "email" name="email" placeholder = "Email">
                    </div>
+                </div>
+                
+                <div class = "form-group">
+                   <label for = "subject" class = "col-sm-2 control-label">Subject</label>
+
+                   <div class = "col-sm-10">
+                      <input type = "text" class = "form-control" id = "subject" name="subject" placeholder = "Subject">
+                   </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="body" class = "col-sm-2 control-label">Body</label>
+                    <div class = "col-sm-10">
+                        <textarea id="body" name="body" rows="5"></textarea>
+                    </div>
                 </div>
 
                 <div class = "form-group">

@@ -5,7 +5,10 @@
  */
 package com.honeywell.hr.service;
 
+import com.honeywell.hr.exception.ClosedSurveyException;
+import com.honeywell.hr.model.CatGrade;
 import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Grade;
 import com.honeywell.hr.model.Survey;
 import java.util.List;
 
@@ -15,8 +18,10 @@ import java.util.List;
  */
 public interface ISurveyService {
     
-    Integer createAndSaveSurvey(Employee evaluator, Employee evaluated);
+    Survey createAndSaveSurvey(Employee evaluator, Employee evaluated);
     List<Survey> getSurveysForEmployee(String employeeId);
     Survey getSurveyById(int surveyId);
+    void answerSurvey(int gradeId, short grade)throws ClosedSurveyException;
+    Grade getSingleGradeToUpdate();
     
 }

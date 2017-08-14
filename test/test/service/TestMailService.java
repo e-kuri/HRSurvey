@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 /**
  *
@@ -41,7 +42,7 @@ public class TestMailService {
         Employee receiver = new Employee();
         receiver.setEmail("e-kuri@hotmail.com");
         
-        mailService.createAndSendEmail(receiver, 1);
+        //mailService.createAndSendEmail(receiver, 1);
     }
     
 }

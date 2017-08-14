@@ -50,7 +50,7 @@ a:hover {
 </style>
     </head>
     <body style="margin-top: 0;margin-bottom: 0;margin-left: 0;margin-right: 0;padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;min-width: 100%;background-color: #f5f5f5">
-        #set($url = "${surveyUrl}?idSurvey=${idSurvey}&rating=" )
+        #set($url = "${surveyUrl}?idGrade=${gradeId}&grade=" )
 
 <table class="main-wrapper" style="border-collapse: collapse;border-spacing: 0;display: table;table-layout: fixed; margin: 0 auto; -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-rendering: optimizeLegibility;background-color: #f5f5f5; width: 100%;">
         <tbody>
@@ -66,7 +66,7 @@ a:hover {
  <center>
 
 <!-- Wufoo -->
-<h3>Dear ${employee.firstName}, thank you for getting in touch with the HR department.<br/>Please help us answering the following survey so we can improve.</h3>
+${body}
 <table width="320" border="0" align="center" cellpadding="20" cellspacing="0" style="text-align: center; background-color: #FFFFFF;">
   <tr>
     <td><p>How will you rate the performance of your HRG during your last request? </p>

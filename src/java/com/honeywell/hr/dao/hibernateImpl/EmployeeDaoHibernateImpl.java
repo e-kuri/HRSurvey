@@ -56,7 +56,6 @@ public class EmployeeDaoHibernateImpl implements EmployeeDao{
     @Override
     public List<Employee> getEmployeesForPartialEmployeeNumber(String partialEmployeeNumber) {
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         Criteria criteria = session.createCriteria(Employee.class);
         List<Employee> employees = null;
         try{
@@ -70,9 +69,8 @@ public class EmployeeDaoHibernateImpl implements EmployeeDao{
 
     @Override
     public Employee getEmployeeById(int employeeId) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Employee employee = (Employee)session.get(Employee.class, employeeId);
-        session.close();
         return employee;
     }
     

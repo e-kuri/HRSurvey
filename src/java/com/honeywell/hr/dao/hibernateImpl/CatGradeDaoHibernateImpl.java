@@ -32,9 +32,7 @@ public class CatGradeDaoHibernateImpl implements CatGradeDao{
     public List<CatGrade> getAllCategories() {
         logger.debug("getting list of categories");
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         List<CatGrade> categories = session.createCriteria(CatGrade.class).list();
-        session.getTransaction().commit();
         logger.info("got " + categories.size() + " categories from the database");
         return categories;
     }

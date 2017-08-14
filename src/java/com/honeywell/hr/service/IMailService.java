@@ -6,11 +6,12 @@
 package com.honeywell.hr.service;
 
 import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Survey;
 
 /**
  *
  * @author H255735
  */
 public interface IMailService {
-    void createAndSendEmail(Employee receiver, int surveyId);
+    void createAndSendEmail(Survey survey, String subject, String body);
 }

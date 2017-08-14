@@ -8,11 +8,13 @@ package com.honeywell.hr.delegate.impl;
 import com.honeywell.hr.model.Employee;
 import org.springframework.stereotype.Component;
 import com.honeywell.hr.delegate.ISurveyDelegate;
-import com.honeywell.hr.model.CatGrade;
+import com.honeywell.hr.exception.ClosedSurveyException;
+import com.honeywell.hr.model.Grade;
 import com.honeywell.hr.model.Survey;
 import com.honeywell.hr.service.ICatGradeService;
 import com.honeywell.hr.service.IMailService;
 import com.honeywell.hr.service.ISurveyService;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,10 +37,10 @@ public class SurveyDelegateImpl implements ISurveyDelegate{
     private ICatGradeService catGradeService;
     
     @Override
-    public void createAndSend(Employee employee) {
+    public void createAndSend(Employee employee, String subject, String body) {
         employee.setId(1);
-        Integer surveyId = surveyService.createAndSaveSurvey(employee, employee);
-        mailService.createAndSendEmail(employee, surveyId);
+        Survey survey = surveyService.createAndSaveSurvey(employee, employee);
+        mailService.createAndSendEmail(survey, subject, body);
     }
 
     @Override
@@ -47,6 +49,11 @@ public class SurveyDelegateImpl implements ISurveyDelegate{
         model.put("survey", surveyService.getSurveyById(surveyId));
         model.put("rating", rating);
         return model;
+    }
+
+    @Override
+    public void answerSurvey(int gradeId, short grade) throws ClosedSurveyException {
+        surveyService.answerSurvey(gradeId, grade);
     }
     
 }

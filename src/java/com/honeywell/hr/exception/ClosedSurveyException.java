@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.dao;
-
-import com.honeywell.hr.model.Grade;
+package com.honeywell.hr.exception;
 
 /**
  *
  * @author H255735
  */
-public interface GradeDao {
-    
-    Grade getById(int id);
-    void update(Grade grade);
+public class ClosedSurveyException extends Exception{
+
+    public ClosedSurveyException() {
+        super("This survey has already been answered.");
+    }
     
 }

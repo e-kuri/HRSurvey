@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.honeywell.hr.dao;
-
-import com.honeywell.hr.model.Grade;
+package com.honeywell.hr.service;
 
 /**
  *
  * @author H255735
  */
-public interface GradeDao {
-    
-    Grade getById(int id);
-    void update(Grade grade);
-    
+public interface IGradeService {
+    void setGrade(int idGrade, int grade);
 }

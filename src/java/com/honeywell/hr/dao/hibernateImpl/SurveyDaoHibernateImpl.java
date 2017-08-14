@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -31,22 +32,20 @@ public class SurveyDaoHibernateImpl implements SurveyDao{
     @Override
     public Integer save(Survey survey) {
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         Integer id = (Integer)session.save(survey);
-        session.getTransaction().commit();
         return id;
     }
 
     @Override
     public void update(Survey survey) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Session session = sessionFactory.getCurrentSession();
+        session.update(survey); 
+   }
 
     @Override
     public Survey getSurveyById(int surveyId) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Survey survey = (Survey)session.get(Survey.class, surveyId);
-        session.close();
         return survey;
     }
     

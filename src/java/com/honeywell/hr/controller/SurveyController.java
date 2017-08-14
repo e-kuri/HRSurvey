@@ -6,11 +6,15 @@
 package com.honeywell.hr.controller;
 
 import com.honeywell.hr.delegate.ISurveyDelegate;
+import com.honeywell.hr.exception.ClosedSurveyException;
 import com.honeywell.hr.model.Employee;
+import com.honeywell.hr.model.Grade;
 import com.honeywell.hr.model.Survey;
 import com.honeywell.hr.service.IMailService;
 import com.honeywell.hr.service.ISurveyService;
 import com.honeywell.hr.service.impl.SurveyServiceImpl;
+import java.util.logging.Level;
+import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,8 @@ import org.springframework.web.portlet.ModelAndView;
 @RequestMapping("/survey")
 public class SurveyController {
     
+    private static Logger logger = Logger.getLogger(SurveyController.class);
+    
     @Autowired
     private ISurveyDelegate surveyDelegate;
     
@@ -38,8 +44,9 @@ public class SurveyController {
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String sendSurvey(Employee employee){
-        surveyDelegate.createAndSend(employee);
+    public String sendSurvey(Employee employee, @RequestParam(required = false) String subject,
+            @RequestParam(required = false) String body){
+        surveyDelegate.createAndSend(employee, subject, body);
         return "mailSent";
     }
     
@@ -55,11 +62,21 @@ public class SurveyController {
         return "employeeDetails";
     }
     
-    @RequestMapping(value = "answer", method = RequestMethod.GET)
-    public String answerSurvey(@RequestParam("idSurvey") int surveyId, 
-            @RequestParam("rating") int rating, ModelMap model){
-        model.addAllAttributes(surveyDelegate.getMapAttributesToShowSurvey(surveyId, rating));
-        return "answerSurvey";
+    @RequestMapping(value = "/answer", method = RequestMethod.GET)
+    public String answerSurvey(@RequestParam int idGrade, @RequestParam short grade){
+        try {
+            surveyDelegate.answerSurvey(idGrade, grade);
+        } catch (ClosedSurveyException ex) {
+            logger.info(ex + " idGrade: " + idGrade);
+            return "alreadyAnsweredSurvey";
+        }
+        return "answeredSurvey";
+    }
+    
+    @RequestMapping(value = "/answer", method = RequestMethod.POST)
+    public String saveSurvey(@RequestParam("idSurvey") int surveyId,
+            @RequestParam("rating") int rating){
+        return "newMail";
     }
     
 }
